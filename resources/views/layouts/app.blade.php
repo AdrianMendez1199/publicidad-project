@@ -11,28 +11,23 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
-
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href={{ asset("css/bootstrap.min.css") }}>
+
     <link rel="stylesheet" href={{ asset("css/estilos.css") }}>
     <link rel="stylesheet" href={{ asset( "css/registro.css") }}>
-    <link rel="stylesheet" href={{ asset("css/bootstrap.min.css") }}>
-    <link rel="stylesheet" type="text/css" href={{ asset("css/slick.css") }}>
-    <link rel="stylesheet" type="text/css" href={{ asset("css/slick-theme.css") }}>
-
 
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href={{ asset("css/slick.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ asset("css/slick-theme.css") }}>
     
 </head>
 <body class="bg-dark">
       @yield('content')
 </body>
-     <script src="{{ asset('js/app.js') }}" defer></script>
      <script src={{ asset("js/jquery-3.4.1.slim.min.js") }}></script>
      <script src={{ asset("js/bootstrap.min.js") }}></script>
      <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>

@@ -76,7 +76,7 @@
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="registro">
+  <div class="modal fade col-12" id="registro">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -96,49 +96,49 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Nombre:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Nacionalidad:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Correo electrónico:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Contraseña:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Whatsapp:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Altura:</label>
-                <input type="text" class="form-control" oninput="this.className = ''" placeholder="1,70">
+                <input type="text" class="form-control" placeholder="1,70">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Color de pelo:</label>
-                <input type="text" class="form-control" oninput="this.className = ''">
+                <input type="text" class="form-control">
               </div>
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Color de ojos:</label>
-                <select name=""  class="form-control" oninput="this.className = ''">
+                <select name=""  class="form-control">
                   <option value="">Elegí</option>
                   <option value="Negro">Negro</option>
                   <option value="Caucásica">Caucásica</option>
@@ -150,7 +150,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Etnicidad:</label>
-                <select name=""  class="form-control" oninput="this.className = ''">
+                <select name=""  class="form-control">
                   <option value="">Elegí</option>
                   <option value="Caucásica">Caucásica</option>
                   <option value="Caucásica">Caucásica</option>
@@ -162,7 +162,7 @@
              <div class="col-6">
               <div class="form-group">
                 <label>Descripción:</label>
-                <textarea name="" class="form-control" oninput="this.className = ''"></textarea>
+                <textarea name="" class="form-control"></textarea>
               </div>
             </div>
             <div class="col-6">
@@ -172,19 +172,19 @@
                   <div class="col">
                     <div class="form-group">
                       <label>Busto:</label>
-                      <input type="text" class="form-control text-center" oninput="this.className = ''" placeholder="90">
+                      <input type="text" class="form-control text-center" placeholder="90">
                     </div>
                   </div>
                   <div class="col">
                     <div class="form-group">
                       <label>Cintura:</label>
-                      <input type="text" class="form-control text-center" oninput="this.className = ''" placeholder="60">
+                      <input type="text" class="form-control text-center" placeholder="60">
                     </div>
                   </div>
                   <div class="col">
                     <div class="form-group">
                       <label>Cadera:</label>
-                      <input type="text" class="form-control text-center" oninput="this.className = ''" placeholder="90">
+                      <input type="text" class="form-control text-center" placeholder="90">
                     </div>
                   </div>
                 </div>
@@ -197,7 +197,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>País:</label>
-                      <select name=""  class="form-control" oninput="this.className = ''">
+                      <select name=""  class="form-control">
                         <option value="">Elegí</option>
                         <option value="Argentina">Argentina</option>
                       </select>
@@ -206,7 +206,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Provincia:</label>
-                      <select name=""  class="form-control" oninput="this.className = ''">
+                      <select name=""  class="form-control">
                         <option value="">Elegí</option>
                         <option value="CABA">Capital Federal</option>
                       </select>
@@ -215,7 +215,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Barrio:</label>
-                      <select name=""  class="form-control" oninput="this.className = ''">
+                      <select name=""  class="form-control">
                         <option value="">Elegí</option>
                         <option value="Belgrano">Belgrano</option>
                       </select>
@@ -359,7 +359,7 @@
    </footer>
 
 
-@stop
+@endsection
 
 @section('scripts')
 <script src="js/registro.js"></script>
@@ -385,4 +385,4 @@
 </script>
 <!-- Registro -->
 <script src="js/registro.js"></script>
-@stop
+@endsection
