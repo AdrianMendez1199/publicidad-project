@@ -13,8 +13,20 @@ function showTab(n) {
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Enviar";
+
     document.getElementById("nextBtn").onclick = function () {
-      window.location = 'https://paypal.com';
+      var data = new FormData(document.getElementById("publish-form"));
+        console.log('DATA ......', data);
+
+      fetch('/save', {
+        method: 'POST', // or 'PUT'
+        body: JSON.stringify(data), // data can be `string` or {object}!
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      }).then(function(res) { res.json() })
+      .catch(error => console.error('Error:', error))
+      .then(response => console.log('Success:', response));
     }
   } else {
     document.getElementById("nextBtn").innerHTML = "Siguiente";
@@ -50,7 +62,7 @@ function validateForm() {
   z = x[currentTab].getElementsByTagName("select");
   a = x[currentTab].getElementsByTagName("textarea");
   var inputs = [...y, ...z, ...a];
-  console.log(inputs)
+  // console.log(inputs)
   // Un bucle que verifica cada campo de entrada en la pestaña actual:
   for (i = 0; i < inputs.length; i++) {
     // Si un campo está vacío ...

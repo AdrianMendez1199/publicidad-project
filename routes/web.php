@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/// USER CONTROLLER
+Route::post('/save', 'UserController@save')->name('user-save');
