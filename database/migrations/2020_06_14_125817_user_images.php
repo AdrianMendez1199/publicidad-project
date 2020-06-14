@@ -18,6 +18,7 @@ class UserImages extends Migration
             $table->string('ruta', 200);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

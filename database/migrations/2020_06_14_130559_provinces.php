@@ -21,7 +21,7 @@ class Provinces extends Migration
             $table->foreign('country_id')
              ->references('id')
              ->on('countries');
-            
+             $table->timestamps();
         });
     }
 

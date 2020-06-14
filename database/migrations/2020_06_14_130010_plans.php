@@ -17,6 +17,7 @@ class Plans extends Migration
             $table->bigIncrements('id');
             $table->string('plan', 100);
             $table->decimal('price', 8, 2);
+            $table->timestamps();
         });
     }
 
