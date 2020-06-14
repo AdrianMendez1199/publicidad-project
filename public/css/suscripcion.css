@@ -1,0 +1,39 @@
+.toggle-switch {
+	height: 30px;
+	width: 55px;
+	background-color: crimson;
+	display: inline-block;
+	vertical-align: middle;
+	border-radius: 20px;
+	position: relative;
+	transition: 300ms;
+}
+
+.toggle-switch::before {
+	content: '';
+	display: inline-block;
+	width: 23px;
+	height: 23px;
+	background-color: #fff;
+	border-radius: 100%;
+	position: absolute;
+	left: 5px;
+	top: 3px;
+	transition: 300ms;
+}
+
+.toggle-switch-container {
+	margin-left: 10px;
+}
+
+.toggle-switch-container input {
+	display: none;
+}
+
+.toggle-switch-container input:checked + .toggle-switch {
+	background-color: violet;
+}
+
+.toggle-switch-container input:checked + .toggle-switch::before {
+	transform: translateX(100%);
+}
