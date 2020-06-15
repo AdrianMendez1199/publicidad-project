@@ -15,15 +15,34 @@ function showTab(n) {
     document.getElementById("nextBtn").innerHTML = "Enviar";
 
     document.getElementById("nextBtn").onclick = function () {       
-      const formEntries = new FormData(document.forms[1]).entries();
-      const json = Object.assign(...Array.from(formEntries, ([x,y]) => ({[x]:y})));
-      // console.log(json);
+      var formData = new FormData();
+
+      formData.append('name', document.getElementsByName('name')[0].value)
+      formData.append('email', document.getElementsByName('email')[0].value)
+      formData.append('whatsapp', document.getElementsByName('whatsapp')[0].value)
+      formData.append('password', document.getElementsByName('password')[0].value)
+      formData.append('height', document.getElementsByName('height')[0].value)
+      formData.append('hair_color', document.getElementsByName('hair_color')[0].value)
+      formData.append('ethnicity', document.getElementsByName('ethnicity')[0].value)
+      formData.append('description', document.getElementsByName('description')[0].value)
+      formData.append('bust', document.getElementsByName('bust')[0].value)
+      formData.append('waist', document.getElementsByName('waist')[0].value)
+      formData.append('eye_color', document.getElementsByName('eye_color')[0].value)
+      formData.append('hip', document.getElementsByName('hip')[0].value)
+
+      formData.append('filename1', document.getElementById('filename1').files[0])
+      formData.append('filename2', document.getElementById('filename2').files[0])
+      formData.append('filename3', document.getElementById('filename3').files[0])
+      formData.append('filename4', document.getElementById('filename4').files[0])
+      formData.append('filename5', document.getElementById('filename5').files[0])
+      formData.append('filename6', document.getElementById('filename6').files[0])
+
       fetch('/save', {
         method: 'POST', // or 'PUT'
-        body: JSON.stringify(json), // data can be `string` or {object}!
+        body: formData, // data can be `string` or {object}! 
         headers:{
-          'Content-Type': 'application/json',
-          'X-CSRF-TOKEN': json._token,
+          // 'Content-Type': 'multipart/form-data',
+          'X-CSRF-TOKEN':  document.getElementsByName('_token')[0].value,
         }
       }).then(function(res) { res.json() })
       .catch(error => console.error('Error:', error))

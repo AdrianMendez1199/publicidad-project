@@ -94,7 +94,7 @@
             <div class="col-12">
               <h4>Datos personales</h4>
             </div>
-            <form id="publish-form">
+            <form id="publish-form" enctype="multipart/form-data">
                 @csrf 
             <div class="col-sm-4">
               <div class="form-group">
@@ -249,37 +249,37 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto1">Foto 1:</label>
-                <input type="file" class="form-control-file" id="foto1" name="foto1">
+                <input type="file" class="form-control-file" id="filename1" name="filename1">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto2">Foto 2:</label>
-                <input type="file" class="form-control-file" id="foto2" name="foto2">
+                <input type="file" class="form-control-file" id="filename2" name="filename2">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto3">Foto 3:</label>
-                <input type="file" class="form-control-file" id="foto3" name="foto3">
+                <input type="file" class="form-control-file" id="filename3" name="filename3">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto4">Foto 4:</label>
-                <input type="file" class="form-control-file" id="foto4" name="foto4">
+                <input type="file" class="form-control-file" id="filename4" name="filename4">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto5">Foto 5:</label>
-                <input type="file" class="form-control-file" id="foto5" name="foto5">
+                <input type="file" class="form-control-file" id="filename5" name="filename5">
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="foto6">Foto 6:</label>
-                <input type="file" class="form-control-file" id="foto6" name="foto6">
+                <input type="file" class="form-control-file" id="filename6" name="filename6">
               </div>
             </div>
           </div>
