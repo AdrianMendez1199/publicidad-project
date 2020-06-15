@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
+// use Exception;
 
 class UserController extends Controller
 {
@@ -24,9 +27,31 @@ class UserController extends Controller
      * @return void
      */
     public function save(Request $request){
-      echo "<pre>";
-      echo "AWUII";
-      print_r($request->all());
+
+      try {  
+      
+        DB::beginTransaction();
+
+        // Check if email exist
+       $emailExists = $this
+              ->userRepo::where('email', $request->email)
+              ->first();
+
+        if ($emailExists) {
+           return response('El email ya esta registrado', 409);
+        }
+
+        $this->userRepo->name = $request->name;
+        $this->userRepo->email = $request->email;
+        $this->userRepo->password = $request->password;
+        $this->userRepo->whatsapp = $request->whatsapp;
+        $this->userRepo->save();
+
+         DB::commit();
+      } catch(\Exception $e) {
+         echo "Error".$e->getMessage();
+         DB::rollback();
+      }
     }
 
     public function update(Request $request) {
