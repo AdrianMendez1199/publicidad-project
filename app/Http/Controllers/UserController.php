@@ -12,34 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-  /**
-   * Reference to user Model
-   * @var [type]
-   */
-  protected $userRepo;
-
-  /**
-   * Reference to Userdetail Model
-   *
-   * @var [type]
-   */
-  protected $userDetailts;
-
-
-  /**
-   * Reference to userImages Model
-   *
-   * @var [type]
-   */
-  protected $UserImages;
-
-
-  public function __construct(User $user, UserDetail $userDetails,  UserImages $UserImages)
-  {
-    $this->userRepo = $user;
-    $this->userDetailts = $userDetails;
-    $this->UserImages = $UserImages;
-  }
+ 
   /**
    * function create user into db
    *
@@ -50,29 +23,29 @@ class UserController extends Controller
   {
 
     try {
-      // print_r($request->all());
-      // die;
       DB::beginTransaction();
 
       // Check if email exist
-      // $emailExists = $this
-      // ->userRepo::where('email', $request->email)
-      // ->first();
+      $emailExists = $this
+      ->userRepo::where('email', $request->email)
+      ->first();
 
-      //  if ($emailExists) {
-      //      return response('El email ya esta registrado', 409);
-      //  }
+       if ($emailExists) {
+        return redirect()
+         ->back()
+         ->with('error', 'Su registro a sido compleado con exito');
+       }
 
       // create user
-      $user = $this->userRepo::create([
+      $user = User::create([
         'name'     => $request->name,
-        'email'    => 'test2@gmail.com', #$request->email,
-        'whatsapp' => '80930237224',
+        'email'    => $request->email,
+        'whatsapp' => $request->whatsapp,
         'password' => bcrypt($request->password),
       ]);
 
       // create user details
-      $this->userDetailts::create([
+      UserDetail::create([
         'height'      => $request->height,
         'hair_color'  => $request->hair_color,
         'ethnicity'   => $request->ethnicity,
@@ -93,7 +66,7 @@ class UserController extends Controller
           $imgPath = public_path() . "/files/{$user->id}";
           $file->move($imgPath, $name);
 
-          $this->UserImages::create([
+          UserImages::create([
             'user_id' => $user->id,
             'ruta' => "$imgPath/$name"
           ]);
@@ -101,6 +74,10 @@ class UserController extends Controller
       }
 
       DB::commit();
+      return redirect()
+       ->back()
+       ->with('message', 'Su registro a sido compleado con exito');
+
     } catch (\Exception $e) {
       echo "Error" . $e->getMessage();
       DB::rollback();
