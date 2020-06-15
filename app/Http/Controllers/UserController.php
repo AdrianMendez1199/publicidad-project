@@ -25,6 +25,7 @@ class UserController extends Controller
      */
     public function save(Request $request){
       echo "<pre>";
+      echo "AWUII";
       print_r($request->all());
     }
 

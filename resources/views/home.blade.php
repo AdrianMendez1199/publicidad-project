@@ -65,6 +65,7 @@
       <div class="col-4 my-3">
         <!-- Inicio Buscador-->
         <form class="buscador">
+           @csrf 
           <input class="form-control mb-3" type="text" placeholder="Ciudad">
           <input type="email" class="form-control mb-4" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu email">
           <textarea class="form-control mb-4" id="exampleFormControlTextarea1" rows="3" placeholder="Mensaje"></textarea>
@@ -94,6 +95,7 @@
               <h4>Datos personales</h4>
             </div>
             <form id="publish-form">
+                @csrf 
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Nombre:</label>
@@ -115,7 +117,7 @@
             <div class="col-sm-4">
               <div class="form-group">
                 <label>Contraseña:</label>
-                <input type="password" class="form-control" name="password">
+                <input type="password" class="form-control" autocomplete="off" name="password">
               </div>
             </div>
             <div class="col-sm-4">

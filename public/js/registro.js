@@ -14,15 +14,16 @@ function showTab(n) {
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Enviar";
 
-    document.getElementById("nextBtn").onclick = function () {
-      var data = new FormData(document.getElementById("publish-form"));
-        console.log('DATA ......', data);
-
+    document.getElementById("nextBtn").onclick = function () {       
+      const formEntries = new FormData(document.forms[1]).entries();
+      const json = Object.assign(...Array.from(formEntries, ([x,y]) => ({[x]:y})));
+      // console.log(json);
       fetch('/save', {
         method: 'POST', // or 'PUT'
-        body: JSON.stringify(data), // data can be `string` or {object}!
+        body: JSON.stringify(json), // data can be `string` or {object}!
         headers:{
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': json._token,
         }
       }).then(function(res) { res.json() })
       .catch(error => console.error('Error:', error))
@@ -88,4 +89,10 @@ function fixStepIndicator(n) {
   }
   //... y agrega la clase "activa" al paso actual:
   x[n].className += " active";
+}
+
+
+
+function serialize(form) {
+  document.getElementsByTagName('')
 }
