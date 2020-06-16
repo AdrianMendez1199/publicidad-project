@@ -15,7 +15,8 @@ class UserImages extends Migration
     {
         Schema::create('users_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ruta', 200);
+            $table->string('file', 300);
+            $table->string('filename', 100);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

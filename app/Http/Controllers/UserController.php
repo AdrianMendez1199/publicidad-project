@@ -26,14 +26,16 @@ class UserController extends Controller
       DB::beginTransaction();
 
       // Check if email exist
-      $emailExists = $this
-      ->userRepo::where('email', $request->email)
+      $emailExists = User::where('email', $request->email)
       ->first();
 
        if ($emailExists) {
-        return redirect()
-         ->back()
-         ->with('error', 'Su registro a sido compleado con exito');
+          return response()
+            ->json([ 
+              'status' => 'NOK',
+              'message' => 'El email que intenta registrar ya existe' 
+            ], 409);
+          
        }
 
       // create user
@@ -57,26 +59,33 @@ class UserController extends Controller
         'user_id'     => $user->id
       ]);
 
-
+ 
 
       if ($request->hasfile('filename1')) {
 
-        foreach ($request->allFiles() as $file) {
+        foreach ($request->allFiles()  as $key => $file) {
           $name = $file->getClientOriginalName();
-          $imgPath = public_path() . "/files/{$user->id}";
+          $imgPath = public_path() . "/storage/{$user->id}";
           $file->move($imgPath, $name);
 
+          // create user img
           UserImages::create([
+            'filename' => "img{$key}",
             'user_id' => $user->id,
-            'ruta' => "$imgPath/$name"
+            'file' => "$imgPath/$name"
           ]);
         }
+
       }
 
+      // save data if
       DB::commit();
-      return redirect()
-       ->back()
-       ->with('message', 'Su registro a sido compleado con exito');
+
+      return response()
+       ->json([ 
+         'status' => 'OK',
+        'message' => 'Su registro a sido compleado con exito' 
+      ]);
 
     } catch (\Exception $e) {
       echo "Error" . $e->getMessage();
@@ -86,6 +95,14 @@ class UserController extends Controller
 
   public function update(Request $request)
   {
+    // create user
+     return User::update([
+      'name'     => $request->name,
+      'email'    => $request->email,
+      'whatsapp' => $request->whatsapp,
+      'password' => bcrypt($request->password),
+    ]);
+
   }
 
   public function delete(int $id)
@@ -95,4 +112,5 @@ class UserController extends Controller
   public function details(int $userId)
   {
   }
+
 }

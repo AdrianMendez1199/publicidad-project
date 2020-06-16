@@ -14,6 +14,6 @@ class UserImages extends Model
      * @var array
      */
     protected $fillable = [
-        'ruta', 'user_id'
+        'file', 'user_id', 'filename'
     ];
 }

@@ -33,6 +33,8 @@
      <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
      <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" defer></script>
+        <!-- Registro -->
+    <script src="js/registro.js"></script>
      @yield('scripts')
 
 </html>

@@ -37,16 +37,35 @@ function showTab(n) {
       formData.append('filename5', document.getElementById('filename5').files[0])
       formData.append('filename6', document.getElementById('filename6').files[0])
 
-      fetch('/save', {
+      var icon = 'success';
+      var title = 'Información';
+
+      fetch('/save', { 
         method: 'POST', // or 'PUT'
         body: formData, // data can be `string` or {object}! 
         headers:{
           // 'Content-Type': 'multipart/form-data',
           'X-CSRF-TOKEN':  document.getElementsByName('_token')[0].value,
         }
-      }).then(function(res) { res.json() })
-      .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+
+      }).then(function(res) { 
+        return res.json()
+      })
+      .then(function(response){
+
+        if(response.status === "NOK") {
+          icon = 'error';
+          title = 'Error';
+        }
+
+        swal.fire({
+          icon: icon,
+          title: title,
+          text: response.message
+        })
+
+      })
+      .catch(error => console.error('Error:', error));
     }
   } else {
     document.getElementById("nextBtn").innerHTML = "Siguiente";

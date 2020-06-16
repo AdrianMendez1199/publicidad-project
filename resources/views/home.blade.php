@@ -91,6 +91,8 @@
   </div>
 
   <!-- Modal -->
+  <form id="publish-form" enctype="multipart/form-data">
+    @csrf 
   <div class="modal fade col-12" id="registro">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -108,9 +110,7 @@
             <div class="col-12">
               <h4>Datos personales</h4>
             </div>
-            <form id="publish-form" enctype="multipart/form-data">
-                @csrf 
-            <div class="col-sm-4">
+            <div class="col-sm-4 ">
               <div class="form-group">
                 <label>Nombre:</label>
                 <input type="text" class="form-control" name="name">
@@ -340,7 +340,7 @@
               <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Siguiente</button>
             </div>
           </div>
-        </form>
+  
 
           <!-- 
           Círculos que indican los pasos del formulario: -->
@@ -358,7 +358,7 @@
       </div>
     </div>
   </div>
-
+</form>
   
 
   <footer class="main-footer">
@@ -379,8 +379,6 @@
 @endsection
 
 @section('scripts')
-<script src="js/registro.js"></script>
-
 <script>
   $(document).ready(function(){
     $('.slider').slick({
@@ -400,6 +398,4 @@
     });
   });
 </script>
-<!-- Registro -->
-<script src="js/registro.js"></script>
 @endsection
