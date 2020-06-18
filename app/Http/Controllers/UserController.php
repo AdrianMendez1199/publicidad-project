@@ -6,13 +6,15 @@ use Illuminate\Http\Request;
 use App\User;
 use App\UserDetail;
 use App\UserImages;
+use App\Payment;
+use App\Plan;
 use Illuminate\Support\Facades\DB;
 
 // use Exception;
 
 class UserController extends Controller
 {
- 
+
   /**
    * function create user into db
    *
@@ -77,16 +79,37 @@ class UserController extends Controller
         }
 
       }
+       // find plans
+       $plan = Plan::where('plan', 'outstanding')
+            ->first();
+       
+       if (!$plan) {
+         return 'Plan not found';
+       }
+       // Try Payment 
+       $payment = new PaymentController();
+       $response = $payment->payWithpaypal($plan);
+      
+       if(strtoupper($response['ACK']) == 'SUCCESS'){
 
-      // save data if
-      DB::commit();
+         Payment::create([
+             'payment_request_token' => $response['TOKEN'],
+             'user_id' => $user->id,
+             'plan_id'   => $plan->id,
+             'status' => 'PENDING'
+         ]);
 
-      return response()
-       ->json([ 
-         'status' => 'OK',
-        'message' => 'Su registro a sido compleado con exito' 
-      ]);
+         // Commit to save transacction information
+         DB::commit();
 
+         return response()
+         ->json([ 
+           'status' => 'OK',
+           'message' => 'Su registro a sido compleado con exito',
+           'paypal_link' => $response['paypal_link']
+        ]);
+       }
+  
     } catch (\Exception $e) {
       echo "Error" . $e->getMessage();
       DB::rollback();

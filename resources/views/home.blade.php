@@ -9,9 +9,9 @@
     @endif
 
 
-    @if(Session::has('message'))
+    @if(Session::has('success'))
     <div class="alert alert-success">
-      {{ Session::get('message')}}
+      {{ Session::get('success')}}
     </div>
     @endif
     

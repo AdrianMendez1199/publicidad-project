@@ -58,11 +58,16 @@ function showTab(n) {
           title = 'Error';
         }
 
-        swal.fire({
-          icon: icon,
-          title: title,
-          text: response.message
-        })
+
+        if (response.status === "OK") {
+            window.open(response.paypal_link)
+        }
+
+        // swal.fire({
+        //   icon: icon,
+        //   title: title,
+        //   text: response.message
+        // })
 
       })
       .catch(error => console.error('Error:', error));

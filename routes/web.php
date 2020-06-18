@@ -13,11 +13,14 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
-Auth::routes();
+// Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index')->name('home');
 
 /// USER CONTROLLER
 Route::post('/save', 'UserController@save')->name('user-save');
+
+Route::get('/payment/success', 'PaymentController@success')
+        ->name('payment.success');

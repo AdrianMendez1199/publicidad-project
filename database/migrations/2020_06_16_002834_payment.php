@@ -16,7 +16,7 @@ class Payment extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->enum('status', ['FAILED', 'APROVED', 'PENDING']);
- 
+            $table->string('payment_request_token', 100);
             $table->unsignedBigInteger('plan_id');
             $table->foreign('plan_id')
              ->references('id')
