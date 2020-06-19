@@ -5,7 +5,9 @@ use Illuminate\Http\Request;
 use Srmklive\PayPal\Services\ExpressCheckout;
 use App\Plan;
 use App\Payment;
-use stdClass;
+use App\Subscription;
+use Carbon\Carbon;
+
 
 class PaymentController extends Controller
 {
@@ -62,8 +64,19 @@ class PaymentController extends Controller
         $response = $provider->getExpressCheckoutDetails($request->token);  
 
         if (in_array(strtoupper($response['ACK']), ['SUCCESS', 'SUCCESSWITHWARNING'])) {
-            Payment::where('payment_request_token', $response['TOKEN'])
-                ->update(array('status' => 'APROVED'));
+
+            $userPayment = Payment::where('payment_request_token', $response['TOKEN'])
+                  ->first();
+
+            $userPayment->status = 'APROVED';
+            $userPayment->save();
+
+            Subscription::create([
+                'plan_id' => $userPayment->plan_id, 
+                'user_id' => $userPayment->user_id, 
+                'start_date' => Carbon::now(),
+                'expired_at' => Carbon::now()->addDays(30)
+            ]);
 
            return redirect('/')
             ->with('success', 'El usuario, se creo correctamente');
