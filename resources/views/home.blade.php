@@ -1,5 +1,22 @@
 @extends('layouts.app')
 
+
+<style>
+  .girl-info {
+    color: #fff;
+    position: absolute;
+    bottom: 0;
+    display: block;
+    width: 100%;
+  }
+  .test { 
+    text-align: center;
+    display: block;
+    width: 100%;
+    background: rgba(254,90,203,0.4);
+ }
+</style>
+
 @section('content')
 <div class="container">
     @if(Session::has('error'))
@@ -15,7 +32,10 @@
     </div>
     @endif
     
-
+    @foreach( $data as $article )
+    
+    @endforeach
+    
     <div class="row border">
 
       <div class="col-12 text-center">
@@ -54,25 +74,24 @@
     <div class="row">
       <div class="col-8 my-3">
         <div class="row mb-5">
-            <div class="card ml-2" style="width:235px">
-                <img class="card-img" src="Img/img1.jpg" alt="Card image">
-            </div>
-          <div class="card ml-2" style="width:235px">
-              <img class="card-img" src="Img/img4.jpg" alt="">
-          </div>
-          <div class="card ml-2" style="width:235px">
-              <img class="card-img" src="Img/img6.jpg" alt="">
-          </div>
-          <div class="card ml-2 mt-2" style="width:235px">
-              <img class="card-img" src="Img/img4.jpg" alt="">
-          </div>
-          <div class="card ml-2 mt-2" style="width:235px">
-              <img class="card-img" src="Img/img7.jpg" alt="">
-          </div>
-
-          <div class="card ml-2 mt-2" style="width:235px">
-              <img class="card-img" src="Img/img11.jpg" alt="">           
-         </div>
+            @foreach ($data as $key => $item)
+            <a href="google.com">
+              <div class="card ml-2" style="width:235px">
+                <img class="card-img" src={{$item->userimages[0]->file}} alt="Card image">
+                
+                <span class="girl-info">
+                 <div class="test">
+                   <span class="modelinfo-name">Angelica Perez</span> 
+                   <div>
+                     <span style="font-size:12px" 
+                      class="modelinfo-location">Buenos Aires, Argentina
+                    </span> 
+                   </div>
+                 </div>
+                </span>
+              </div>
+            </a>
+            @endforeach 
         </div>
       </div>
 
