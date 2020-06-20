@@ -15,6 +15,7 @@ class UserDetails extends Migration
     {
         Schema::create('users_details', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('phone', 50);
             $table->string('height', 50);
             $table->string('hair_color', 50);
             $table->string('eye_color', 50);

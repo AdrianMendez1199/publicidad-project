@@ -16,9 +16,8 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->enum('status', ['I', 'A', 'B', 'SUS']);
+            $table->enum('status', ['A', 'I', 'B', 'SUS']);
             $table->string('email')->unique();
-            $table->string('whatsapp')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

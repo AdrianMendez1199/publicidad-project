@@ -132,8 +132,10 @@ class UserController extends Controller
   {
   }
 
-  public function details(int $userId)
+  public function details(int $id)
   {
+     $user = User::findOrFail($id);
+     return view('user.details', [ 'user' => $user ]);
   }
 
 }

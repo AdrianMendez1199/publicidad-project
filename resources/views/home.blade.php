@@ -74,14 +74,14 @@
     <div class="row">
       <div class="col-8 my-3">
         <div class="row mb-5">
-            @foreach ($data as $key => $item)
-            <a href="google.com">
+            @foreach ($data as $key => $user)
+            <a href={{ route('user-details', ['id' =>  $user->id]) }} target="_blank">
               <div class="card ml-2" style="width:235px">
-                <img class="card-img" src={{$item->userimages[0]->file}} alt="Card image">
+                <img class="card-img" src={{$user->userimages[0]->file}} alt="Card image">
                 
                 <span class="girl-info">
                  <div class="test">
-                   <span class="modelinfo-name">Angelica Perez</span> 
+                 <span class="modelinfo-name">{{ $user->name }}</span> 
                    <div>
                      <span style="font-size:12px" 
                       class="modelinfo-location">Buenos Aires, Argentina

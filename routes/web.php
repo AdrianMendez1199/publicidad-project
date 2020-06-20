@@ -17,10 +17,11 @@
 
 // Auth::routes();
 
+// Home Controller
 Route::get('/', 'HomeController@index')->name('home');
 
 /// USER CONTROLLER
 Route::post('/save', 'UserController@save')->name('user-save');
-
+Route::get('/user/{id}', 'UserController@details')->name('user-details');
 Route::get('/payment/success', 'PaymentController@success')
         ->name('payment.success');
