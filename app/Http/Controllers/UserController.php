@@ -9,6 +9,7 @@ use App\UserImages;
 use App\Payment;
 use App\Plan;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 // use Exception;
 
@@ -25,6 +26,7 @@ class UserController extends Controller
   {
 
     try {
+
       DB::beginTransaction();
 
       // Check if email exist
@@ -44,21 +46,23 @@ class UserController extends Controller
       $user = User::create([
         'name'     => $request->name,
         'email'    => $request->email,
-        'whatsapp' => $request->whatsapp,
         'password' => bcrypt($request->password),
       ]);
 
       // create user details
       UserDetail::create([
-        'height'      => $request->height,
-        'hair_color'  => $request->hair_color,
-        'ethnicity'   => $request->ethnicity,
-        'description' => $request->description,
-        'bust'        => $request->bust,
-        'waist'       => $request->waist,
-        'eye_color'   => $request->eye_color,
-        'hip'         => $request->hip,
-        'user_id'     => $user->id
+        'height'        => $request->height,
+        'hair_color'    => $request->hair_color,
+        'ethnicity'     => $request->ethnicity,
+        'description'   => $request->description,
+        'bust'          => $request->bust,
+        'waist'         => $request->waist,
+        'eye_color'     => $request->eye_color,
+        'hip'           => $request->hip,
+        'user_id'       => $user->id,
+        'phone'         => $request->whatsapp,
+        'travels'       => $request->travels,
+        'date_of_birth' => Carbon::parse($request->date_of_birth)->format('y/m/d')
       ]);
 
  
@@ -67,7 +71,7 @@ class UserController extends Controller
 
         foreach ($request->allFiles()  as $key => $file) {
           $name = $file->getClientOriginalName();
-          $imgPath = public_path() . "/storage/{$user->id}";
+          $imgPath = "storage/{$user->id}";
           $file->move($imgPath, $name);
 
           // create user img
@@ -80,15 +84,22 @@ class UserController extends Controller
 
       }
        // find plans
-       $plan = Plan::where('plan', 'outstanding')
+       $plan = Plan::where('plan', $request->plan)
             ->first();
        
        if (!$plan) {
          return 'Plan not found';
        }
        // Try Payment 
-       $payment = new PaymentController();
-       $response = $payment->payWithpaypal($plan);
+       
+       if($request->pago === 'paypal') {
+         $payment = new PaymentController();
+         $response = $payment->payWithpaypal($plan);
+       }else{
+         // TODO pago con tarjeta
+         $payment = new PaymentController();
+         $response = $payment->payWithpaypal($plan);
+       }
       
        if(strtoupper($response['ACK']) == 'SUCCESS'){
 

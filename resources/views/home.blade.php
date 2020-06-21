@@ -185,6 +185,24 @@
                 </select>
               </div>
             </div>
+            <div class="col-6">
+              <div class="form-group">
+                  <label>Fecha Nacimiento: </label>  
+                  <input type="text" id="datepicker" name="date_of_birth" class="form-control">
+              </div>
+            </div>
+            <div class="col-6">
+                <div class="form-group">
+                    <label> Genero: </label>
+                    <select name="gender" class="form-control">
+                      <option value="mujer">Mujer</option>
+                      <option value="hombre">Hombre</option>
+                      <option value="gay">Gay</option>
+                      <option value="transexual">Transexual</option>
+                    </select>
+                </div>
+              </div>
+
              <div class="col-6">
               <div class="form-group">
                 <label>Descripción:</label>
@@ -251,12 +269,12 @@
                     <p class="d-inline-block">Disponibilidad para viajar?:</p>
                     <div class="form-check d-inline-block">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="travels" value="si" checked> SI
+                        <input class="form-check-input" type="radio" name="travels" value="Y" checked> SI
                       </label>
                     </div>
                     <div class="form-check d-inline-block">
                       <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="travels" value="no"> NO
+                        <input class="form-check-input" type="radio" name="travels" value="N"> NO
                       </label>
                     </div>
                   </div>
@@ -331,13 +349,13 @@
               <h5>Medio de pago</h5>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="pago" value="stardar" checked> 
+                  <input class="form-check-input" type="radio" name="pago" value="tc" > 
                   Tarjeta de crédito
                 </label>
               </div>
               <div class="form-check">
                 <label class="form-check-label">
-                  <input class="form-check-input" type="radio" name="pago" value="stardar"> 
+                  <input class="form-check-input" type="radio" name="pago" value="paypal" checked> 
                   Paypal
                 </label>
               </div>
@@ -392,6 +410,8 @@
 @section('scripts')
 <script>
   $(document).ready(function(){
+    $('#datepicker').datepicker();
+
     $('.slider').slick({
       dots: true,
       autoplay: true,

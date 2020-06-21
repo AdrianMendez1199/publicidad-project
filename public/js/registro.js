@@ -29,7 +29,14 @@ function showTab(n) {
       formData.append('waist', document.getElementsByName('waist')[0].value)
       formData.append('eye_color', document.getElementsByName('eye_color')[0].value)
       formData.append('hip', document.getElementsByName('hip')[0].value)
-
+      formData.append('travels', document.getElementsByName('travels')[0].value)
+      formData.append('plan', document.getElementsByName('plan')[0].value)
+      formData.append('pago', document.getElementsByName('pago')[0].value)
+      formData.append('date_of_birth', document.getElementsByName('date_of_birth')[0].value)
+      formData.append('gender', document.getElementsByName('gender')[0].value)
+      
+      
+      
       formData.append('filename1', document.getElementById('filename1').files[0])
       formData.append('filename2', document.getElementById('filename2').files[0])
       formData.append('filename3', document.getElementById('filename3').files[0])
@@ -60,7 +67,7 @@ function showTab(n) {
 
 
         if (response.status === "OK") {
-            window.open(response.paypal_link)
+            window.location = response.paypal_link
         }
 
         // swal.fire({

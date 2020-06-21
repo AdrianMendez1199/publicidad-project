@@ -23,17 +23,24 @@
 
     <link rel="stylesheet" type="text/css" href={{ asset("css/slick.css") }}>
     <link rel="stylesheet" type="text/css" href={{ asset("css/slick-theme.css") }}>
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/1.0.9/datepicker.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
 </head>
 <body class="bg-dark">
     @yield('content')
 </body>
+
+
      <script src={{ asset("js/jquery-3.4.1.slim.min.js") }}></script>
      <script src={{ asset("js/bootstrap.min.js") }}></script>
      <script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
      <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js" defer></script>
-        <!-- Registro -->
+
+     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" defer></script>
+     <!-- Registro -->
     <script src="js/registro.js"></script>
      @yield('scripts')
 
