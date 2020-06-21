@@ -260,7 +260,7 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>Barrio:</label>
-                      <select name="neighborhood"  class="form-control">
+                      <select name="neighborhood" id="neighborhood" class="form-control">
                         <option value="">Elegí</option>
                         <option value="Belgrano">Belgrano</option>
                       </select>
@@ -451,7 +451,26 @@
 
     $("#province").on("change", function(e){
       e.preventDefault();
-      console.log('TEST')
+      $("#neighborhood")
+      .html('<select name="neighborhood" id="neighborhood" class="form-control"> <option value="">Elegí</option><option value="Belgrano">Belgrano</option></select>');
+
+      var id = $(this).val();
+
+      if(id) {
+        $.ajax({
+          url: "/provinces/neighborhood/" + id,
+          type: 'GET',
+          success:function(resp) {
+           if(resp) {
+             for(i=0; i < resp[0].length; i++) {
+              $("#neighborhood")
+              .append("<option value="+resp[0][i].id+">"+ resp[0][i].neighborhood +"</option>")
+             }
+           }
+          }
+        })
+      }
+
     })
   });
 </script>

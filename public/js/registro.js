@@ -35,6 +35,10 @@ function showTab(n) {
       formData.append('date_of_birth', document.getElementsByName('date_of_birth')[0].value)
       formData.append('gender', document.getElementsByName('gender')[0].value)
       
+      formData.append('country', document.getElementsByName('country')[0].value)
+      formData.append('province', document.getElementsByName('province')[0].value)
+      formData.append('neighborhood', document.getElementsByName('neighborhood')[0].value)
+      
       
       
       formData.append('filename1', document.getElementById('filename1').files[0])
