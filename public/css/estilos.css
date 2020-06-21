@@ -80,6 +80,7 @@ margin: 5px;
 .slider {
 	display: flex;
 	flex-wrap: wrap;
+	/* justify-content: flex-start; */
 }
 
 .girl-info {

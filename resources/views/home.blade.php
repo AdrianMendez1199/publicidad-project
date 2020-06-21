@@ -35,22 +35,23 @@
         <h3 class="text-rigth">Destacadas</h3>
         <div class="slider" style="background-image: url(Img/logo.jpg)" class="slider-img">
           @foreach ($data as $key => $user)
-          @if($user->subscription)
-          <div  class="card mt-4" style="text-align:center;">
-            <img class="card-img" src={{ $user->userimages[0]->file }} alt="">
-            <span class="girl-info">
-                <div class="test">
-                <span class="modelinfo-name">{{ $user->name }}</span> 
-                  <div>
-                    <span style="font-size:12px" 
-                     class="modelinfo-location">Buenos Aires, Argentina
-                   </span> 
+            @if($user->subscription)
+            <div class="card mt-4" style="text-align:center;">
+              <a href={{ route('user.details', ['id' => $user->id]) }}>
+                <img class="card-img" src={{ $user->userimages[0]->file }} alt="">
+              </a>
+              <span class="girl-info">
+                  <div class="test">
+                  <span class="modelinfo-name">{{ $user->name }}</span> 
+                    <div>
+                      <span style="font-size:12px" 
+                      class="modelinfo-location">Buenos Aires, Argentina
+                    </span> 
+                    </div>
                   </div>
-                </div>
-               </span>
-
-          </div>
-          @endif
+                </span>
+            </div>
+            @endif
           @endforeach
           
 
@@ -65,7 +66,7 @@
       <div class="col-8 my-3">
         <div class="row mb-5">
             @foreach ($data as $key => $user)
-            <a href={{ route('user-details', ['id' =>  $user->id]) }} target="_blank">
+            <a href={{ route('user.details', ['id' =>  $user->id]) }} target="_blank">
               <div class="card ml-2" style="width:235px">
                 <img class="card-img" src={{$user->userimages[0]->file}} alt="Card image">
                 
