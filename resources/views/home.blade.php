@@ -241,18 +241,19 @@
                   <div class="col-4">
                     <div class="form-group">
                       <label>País:</label>
-                      <select name="contry"  class="form-control">
+                      <select name="country" id="country"  class="form-control">
                         <option value="">Elegí</option>
-                        <option value="Argentina">Argentina</option>
+                        @foreach ($countries as $country)
+                         <option value={{ $country->id }}> {{ $country->country }}</option>   
+                        @endforeach
                       </select>
                     </div>
                   </div>
                   <div class="col-4">
                     <div class="form-group">
                       <label>Provincia:</label>
-                      <select name="province"  class="form-control">
+                      <select name="province" id="province"  class="form-control">
                         <option value="">Elegí</option>
-                        <option value="CABA">Capital Federal</option>
                       </select>
                     </div>
                   </div>
@@ -427,6 +428,31 @@
         }
       ],
     });
+
+    $("#country").change(function(e) {
+      e.preventDefault();
+      $("#province").html('<select name="province" id="province"  class="form-control"><option value="">Elegí</option> </select>');
+      var id  = $(this).val();
+
+      if(id) {
+        $.ajax({
+          url: "/country/provinces/" + id,
+          type: 'GET',
+          success:function(resp) {
+           if(resp) {
+             for(i=0; i < resp[0].length; i++) {
+              $("#province").append("<option value="+resp[0][i].id+">"+ resp[0][i].province +"</option>")
+             }
+           }
+          }
+        })
+      }
+    })
+
+    $("#province").on("change", function(e){
+      e.preventDefault();
+      console.log('TEST')
+    })
   });
 </script>
 @endsection

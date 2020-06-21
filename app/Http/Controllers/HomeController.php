@@ -3,28 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Country;
 use Carbon\Carbon;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
+   
     /**
      * Show the application dashboard.
-     *
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        $data = User::with(['userimages' => function($query) {
+    {   
+        $countries = Country::select('country', 'id')
+        ->get();
+
+        $user = User::with(['userimages' => function($query) {
             $query->where('filename','imgfilename1');
         }])
             ->whereHas('subscription', function ($query) {
@@ -34,6 +28,6 @@ class HomeController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
     
-        return view('home', ['data' => $data]);
+        return view('home', ['data' => $user, 'countries' => $countries]);
     }
 }

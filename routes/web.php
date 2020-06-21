@@ -25,3 +25,10 @@ Route::post('/save', 'UserController@save')->name('user-save');
 Route::get('/user/{id}', 'UserController@details')->name('user-details');
 Route::get('/payment/success', 'PaymentController@success')
         ->name('payment.success');
+
+// COUNTRY ROUTES
+Route::get('/country/provinces/{id}', 'CountryController@getProvinceByCountry')
+        ->name('country.provinces');
+
+Route::get('/provinces/neighborhood/{id}', 'CountryController@getNeighborhoodByProvince')
+        ->name('provinces.neighborhood');
