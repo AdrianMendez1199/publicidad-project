@@ -26,7 +26,6 @@
     
 </head>
 <body class="bg-dark">
-    {{-- @include('layouts.sidebar') --}}
     @yield('content')
 </body>
      <script src={{ asset("js/jquery-3.4.1.slim.min.js") }}></script>

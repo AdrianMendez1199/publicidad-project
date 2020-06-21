@@ -94,17 +94,9 @@
             @endforeach 
         </div>
       </div>
-
+       
       <div class="col-4 my-3">
-        <!-- Inicio Buscador-->
-        <form class="buscador">
-           @csrf 
-          <input class="form-control mb-3" type="text" placeholder="Ciudad">
-          <input type="email" class="form-control mb-4" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa tu email">
-          <textarea class="form-control mb-4" id="exampleFormControlTextarea1" rows="3" placeholder="Mensaje"></textarea>
-          <button class="btn btn-info" type="submit">Buscar</button>
-        </form>
-        <!-- Fin Buscador-->
+         @include('user.search')
       </div>
     </div>
   </div>

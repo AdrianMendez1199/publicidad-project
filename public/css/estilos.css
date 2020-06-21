@@ -10,9 +10,6 @@ h3 {
 	color: white;
 }
 
-element.style {
-    
-}
 /*carrusel clientes*/
 .responsive {
 	padding: 30px;
@@ -31,7 +28,13 @@ element.style {
 }
 
 form.buscador {
-	background-color: #e5006a;
+	background-color: #e0006c;
+}
+
+.form-search-container .amd-btn {
+border-radius: 25px;
+text-align: center;
+margin: 10px 20px 4px 114px;
 }
 
 .main-footer {
@@ -56,4 +59,16 @@ form.buscador {
 	height: 100%;
 	box-shadow: 0 0 20px #e5006a;
 	/* margin-top: 10px; */
+}
+
+.buscador select {
+margin: 5px;
+}
+
+.form-search-container-title {
+ margin-bottom: 10px;
+}
+.form-search-container-title h4{
+ text-align: left;
+ color: white;
 }
