@@ -1,22 +1,4 @@
 @extends('layouts.app')
-
-
-<style>
-  .girl-info {
-    color: #fff;
-    position: absolute;
-    bottom: 0;
-    display: block;
-    width: 100%;
-  }
-  .test { 
-    text-align: center;
-    display: block;
-    width: 100%;
-    background: rgba(254,90,203,0.4);
- }
-</style>
-
 @section('content')
 <div class="container">
     @if(Session::has('error'))
