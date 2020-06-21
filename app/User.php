@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Subscription;
 use App\UserImages;
+use App\Plan;
+use App\UserDetail;
 
 class User extends Authenticatable
 {
@@ -36,18 +38,19 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+    'email_verified_at' => 'datetime',
     ];
 
     public function user_details() {
-        return $this->hasOne('App\UserDetail');
+        return $this->hasOne(UserDetail::class);
     }
 
     public function userimages() {
         return $this->hasMany(UserImages::class);
     }
 
-    public function subscription(){
+    public function subscription() {
         return $this->hasOne(Subscription::class);
     }
+
 }

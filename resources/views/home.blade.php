@@ -14,12 +14,8 @@
     </div>
     @endif
     
-    @foreach( $data as $article )
-    
-    @endforeach
-    
+  
     <div class="row border">
-
       <div class="col-12 text-center">
         <img src={{ asset("Img/LogoBlanco.png") }} alt="" class="">
         <button type="button" class="btn btn-outline-light btn-md btn-block" data-toggle="modal" data-target="#registro">
@@ -36,16 +32,28 @@
 
       <div class="col-12">
         <!-- carrusel destacados-->
-        <h3 class="text-center">Destacadas</h3>
+        <h3 class="text-rigth">Destacadas</h3>
         <div class="slider" style="background-image: url(Img/logo.jpg)" class="slider-img">
-          <div><img class="slider-img" src={{ asset("Img/img1.jpg") }} alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img4.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img6.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img7.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img11.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img12.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img11.jpg") }}  alt=""></div>
-          <div><img class="slider-img" src={{ asset("Img/img6.jpg") }}  alt=""></div>
+          @foreach ($data as $key => $user)
+          @if($user->subscription)
+          <div  class="card mt-4" style="text-align:center;">
+            <img class="card-img" src={{ $user->userimages[0]->file }} alt="">
+            <span class="girl-info">
+                <div class="test">
+                <span class="modelinfo-name">{{ $user->name }}</span> 
+                  <div>
+                    <span style="font-size:12px" 
+                     class="modelinfo-location">Buenos Aires, Argentina
+                   </span> 
+                  </div>
+                </div>
+               </span>
+
+          </div>
+          @endif
+          @endforeach
+          
+
         </div>
         <!-- Fin carrusel destacados-->
       </div>

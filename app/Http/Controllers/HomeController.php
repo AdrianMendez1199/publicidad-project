@@ -18,13 +18,15 @@ class HomeController extends Controller
         $countries = Country::select('country', 'id')
         ->get();
 
+
         $user = User::with(['userimages' => function($query) {
             $query->where('filename','imgfilename1');
+        }, 'subscription' => function($query) {
+            $query->where('plan_id' , 1);
         }])
             ->whereHas('subscription', function ($query) {
                 $query->where('expired_at', '>', Carbon::now());
             })
-
             ->orderBy('created_at', 'desc')
             ->get();
     
