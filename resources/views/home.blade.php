@@ -87,7 +87,7 @@
       </div>
        
       <div class="col-4 my-3">
-         @include('user.search')
+         @include('user.search', ['countries' => $countries])
       </div>
     </div>
   </div>

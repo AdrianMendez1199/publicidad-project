@@ -6,6 +6,11 @@
      @csrf 
      <select>
        <option>País</option>
+       @isset($countries)
+        @foreach ($countries as $country)
+          <option value={{ $country->id }}>{{ $country->country }}</option>
+        @endforeach
+       @endisset
      </select>
      <select>
        <option value="mujer">Mujer</option>
