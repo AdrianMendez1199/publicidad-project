@@ -51,19 +51,23 @@ class UserController extends Controller
 
       // create user details
       UserDetail::create([
-        'height'        => $request->height,
-        'hair_color'    => $request->hair_color,
-        'ethnicity'     => $request->ethnicity,
-        'description'   => $request->description,
-        'bust'          => $request->bust,
-        'waist'         => $request->waist,
-        'eye_color'     => $request->eye_color,
-        'hip'           => $request->hip,
-        'user_id'       => $user->id,
-        'phone'         => $request->whatsapp,
-        'travels'       => $request->travels,
-        'date_of_birth' => Carbon::parse($request->date_of_birth)->format('y/m/d'),
-        'weight'        => $request->weight,
+        'height'          => $request->height,
+        'hair_color'      => $request->hair_color,
+        'ethnicity'       => $request->ethnicity,
+        'description'     => $request->description,
+        'bust'            => $request->bust,
+        'waist'           => $request->waist,
+        'eye_color'       => $request->eye_color,
+        'hip'             => $request->hip,
+        'user_id'         => $user->id,
+        'phone'           => $request->whatsapp,
+        'travels'         => $request->travels,
+        'date_of_birth'   => Carbon::parse($request->date_of_birth)->format('y/m/d'),
+        'weight'          => $request->weight,
+        'country_id'      => $request->country, 
+        'province_id'     => $request->province,
+        'neighborhood_id' => $request->neighborhood,
+        'gender'          => $request->gender,
       ]);
 
  
@@ -128,25 +132,10 @@ class UserController extends Controller
     }
   }
 
-  public function update(Request $request)
-  {
-    // create user
-     return User::update([
-      'name'     => $request->name,
-      'email'    => $request->email,
-      'whatsapp' => $request->whatsapp,
-      'password' => bcrypt($request->password),
-    ]);
-
-  }
-
-  public function delete(int $id)
-  {
-  }
-
   public function details(int $id)
   {
      $user = User::findOrFail($id);
+
      return view('user.details', [ 'user' => $user ]);
   }
 

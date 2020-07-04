@@ -1,6 +1,8 @@
 var currentTab = 0; // La pestaña actual está configurada para ser la primera pestaña (0)
 showTab(currentTab); // Mostrar la pestaña actual
 
+// document.getElementById("loading")[0].style.display = "none";
+
 function showTab(n) {
     // Esta función mostrará la pestaña especificada del formulario ...
     var x = document.getElementsByClassName("tab");
@@ -15,6 +17,8 @@ function showTab(n) {
         document.getElementById("nextBtn").innerHTML = "Enviar";
 
         document.getElementById("nextBtn").onclick = function() {
+            // document.getElementsByClassName("loading").style.display = "display";
+
             var formData = new FormData();
 
             formData.append('name', document.getElementsByName('name')[0].value)

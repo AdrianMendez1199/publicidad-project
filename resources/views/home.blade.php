@@ -14,10 +14,10 @@
     </div>
     @endif
     
-  
+    <div class="loading">Loading&#8230;</div>
     <div class="row border">
       <div class="col-12 text-center">
-        <img src={{ asset("Img/LogoBlanco.png") }} alt="" class="">
+        <img src={{ asset("Img/LogoBlanco.png") }} alt="" class="img-fluid">
         <button type="button" class="btn btn-outline-light btn-md btn-block" data-toggle="modal" data-target="#registro">
           Publicar
         </button>
@@ -38,7 +38,7 @@
             @if($user->subscription)
             <div class="card mt-4" style="text-align:center;">
               <a href={{ route('user.details', ['id' => $user->id]) }}>
-                <img class="card-img" src={{ $user->userimages[0]->file }} alt="">
+                <img class="card-img img-fluid" src={{ $user->userimages[0]->file }} alt="">
               </a>
               <span class="girl-info">
                   <div class="test">
@@ -68,14 +68,14 @@
             @foreach ($data as $key => $user)
             <a href={{ route('user.details', ['id' =>  $user->id]) }} target="_blank">
               <div class="card ml-2" style="width:235px">
-                <img class="card-img" src={{$user->userimages[0]->file}} alt="Card image">
+                <img class="card-img img-fluid" src={{$user->userimages[0]->file}} alt="Card image">
                 
                 <span class="girl-info">
                  <div class="test">
                  <span class="modelinfo-name">{{ $user->name }}</span> 
                    <div>
                      <span style="font-size:12px" 
-                      class="modelinfo-location">Buenos Aires, Argentina
+                      class="modelinfo-location">
                     </span> 
                    </div>
                  </div>
@@ -332,13 +332,28 @@
               <div class="form-check">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="plan" value="outstanding" checked> 
-                  Destacado - USD $40
+                  Destacado - USD $40 - 1 Mes
                 </label>
               </div>
+
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="plan" value="outstanding"> 
+                    Destacado - USD $250 - 1 año
+                </label>
+              </div>
+
               <div class="form-check">
                 <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="plan" value="stardar"> 
-                  Standar - USD $10
+                  Standar - USD $30 - 1 Mes
+                </label>
+              </div>
+
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="plan" value="stardar"> 
+                  Standar - USD $150 1 año 
                 </label>
               </div>
             </div>
@@ -407,6 +422,14 @@
 @section('scripts')
 <script>
   $(document).ready(function(){
+    $('.loading').hide()
+     .ajaxStart(function() {
+       $(this).show()
+     })
+     .ajaxStop(function() {
+      $(this).hide();
+     })
+
     $('#datepicker').datepicker();
 
     $('.slider').slick({
