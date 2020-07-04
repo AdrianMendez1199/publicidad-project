@@ -14,7 +14,7 @@ class UserDetail extends Model
     protected $fillable = [
         'height', 'hair_color', 'ethnicity', 'description',
         'eye_color', 'bust', 'waist', 'hip', 'user_id', 'phone',
-        'gender', 'availability_travel', 'date_of_birth'
+        'gender', 'availability_travel', 'date_of_birth', 'weight'
     ];
 
 }
