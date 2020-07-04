@@ -18,7 +18,7 @@ class HomeController extends Controller
         $countries = Country::select('country', 'id')
         ->get();
 
-
+            
         $user = User::with(['userimages' => function($query) {
             $query->where('filename','imgfilename1');
         }, 'subscription' => function($query) {

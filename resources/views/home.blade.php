@@ -33,7 +33,7 @@
       <div class="col-12">
         <!-- carrusel destacados-->
         <h3 class="text-rigth">Destacadas</h3>
-        <div class="slider" style="background-image: url(Img/logo.jpg)" class="slider-img">
+        <div  class="slider-img slider amd-slider">
           @foreach ($data as $key => $user)
             @if($user->subscription)
             <div class="card mt-4" style="text-align:center;">
@@ -253,12 +253,12 @@
                       <label>Barrio:</label>
                       <select name="neighborhood" id="neighborhood" class="form-control">
                         <option value="">Elegí</option>
-                        <option value="Belgrano">Belgrano</option>
+                        {{-- <option value="Belgrano">Belgrano</option> --}}
                       </select>
                     </div>
                   </div>
                   <div class="col-12">
-                    <p class="d-inline-block">Disponibilidad para viajar?:</p>
+                    <p class="d-inline-block">Disponibilidad para viajar ?: </p>
                     <div class="form-check d-inline-block">
                       <label class="form-check-label">
                         <input class="form-check-input" type="radio" name="travels" value="Y" checked> SI
@@ -269,6 +269,11 @@
                         <input class="form-check-input" type="radio" name="travels" value="N"> NO
                       </label>
                     </div>
+                  </div>
+
+                  <div class="col-2">
+                    <p class="d-inline-block">Peso (KG): </p>
+                    <input class="form-control" type="text" name="weight" placeholder="50"> 
                   </div>
                 </div>
               </div>

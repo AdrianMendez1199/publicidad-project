@@ -24,6 +24,7 @@ class UserDetails extends Migration
             $table->integer('waist');
             $table->integer('hip');
             $table->string('phone', 50);
+            $table->string('weight', 10);
             $table->date('date_of_birth');
             $table->enum('availability_travel', ['Y', 'N']);
             $table->unsignedBigInteger('user_id');

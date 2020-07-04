@@ -62,6 +62,7 @@ class UserController extends Controller
         'user_id'       => $user->id,
         'phone'         => $request->whatsapp,
         'travels'       => $request->travels,
+        'weight'        => $request->weight,
         'date_of_birth' => Carbon::parse($request->date_of_birth)->format('y/m/d')
       ]);
 
