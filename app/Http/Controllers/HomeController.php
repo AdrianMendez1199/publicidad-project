@@ -23,6 +23,9 @@ class HomeController extends Controller
             $query->where('filename','imgfilename1');
         }, 'subscription' => function($query) {
             $query->where('plan_id' , 1);
+        }, 'user_details' => function($query) { 
+            $query->with('country');
+            $query->with('province');
         }])
             ->whereHas('subscription', function ($query) {
                 $query->where('expired_at', '>', Carbon::now());

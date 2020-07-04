@@ -45,7 +45,7 @@
                   <span class="modelinfo-name">{{ $user->name }}</span> 
                     <div>
                       <span style="font-size:12px" 
-                      class="modelinfo-location">Buenos Aires, Argentina
+                      class="modelinfo-location">{{ $user->user_details->country->country  }}, {{ $user->user_details->province->province  }}
                     </span> 
                     </div>
                   </div>
@@ -76,6 +76,7 @@
                    <div>
                      <span style="font-size:12px" 
                       class="modelinfo-location">
+                      {{ $user->user_details->country->country  }}, {{ $user->user_details->province->province  }}
                     </span> 
                    </div>
                  </div>

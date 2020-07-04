@@ -373,7 +373,9 @@
     </div>
     <div class="clear20"></div>
     <div class="aboutme">
-      <h4>Sobre Mi:</h4> <b>32 year old <span itemprop="gender">{{ $user->user_details->gender }}</span> Soy de: <a
+    <h4>Sobre Mi:</h4> <b> {{ strtotime($user->user_details->date_of_birth, date('ymd')) - date('ymd') }} 
+      <span itemprop="gender">{{ ucfirst($user->user_details->gender) }}</span>,
+         Soy de: <a
           href="#" title={{ $user->user_details->province->province }}>{{ $user->user_details->province->province }}</a>, <a
           href="#" title={{ $user->user_details->country->province }}>{{ $user->user_details->country->country }}</a></b>
       <div class="clear5"></div> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in quam pretium,
